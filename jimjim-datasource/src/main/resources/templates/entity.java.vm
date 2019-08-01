@@ -42,7 +42,7 @@ public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}
 #elseif(${activeRecord})
 public class ${entity} extends Model<${entity}> {
 #else
-public class ${entity} implements BaseEntity {
+public class ${entity} implements BaseDO {
 #end
 
     private static final long serialVersionUID = 1L;

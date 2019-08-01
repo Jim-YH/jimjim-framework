@@ -40,8 +40,10 @@ public class MybatisGeneratorUtil {
                 .setDriverName("com.mysql.cj.jdbc.Driver");
 
         StrategyConfig strategyConfig = new StrategyConfig()
+                .setRestControllerStyle(true)
                 .setCapitalMode(true)
                 .setEntityLombokModel(true)
+                .setControllerMappingHyphenStyle(true)
                 .setTablePrefix(mybatisGeneratorObj.getTablePrefix())
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setInclude(mybatisGeneratorObj.getIncludeTables())
@@ -83,7 +85,7 @@ public class MybatisGeneratorUtil {
                         "/" + mybatisGeneratorObj.getPackageName().replaceAll("\\.", "/") +
                         "/api/criteria/";
                 new File(path).mkdirs();
-                return path + tableInfo.getEntityName() + "Criteria.java";
+                return path + tableInfo.getEntityName().substring(0, tableInfo.getEntityName().indexOf("DO")) + "Criteria.java";
             }
         });
         cfg.setFileOutConfigList(focList);
@@ -95,6 +97,7 @@ public class MybatisGeneratorUtil {
                 .setPackageInfo(
                         new PackageConfig()
                                 .setParent(mybatisGeneratorObj.getPackageName())
+                                .setController("provider.controller")
                                 .setMapper("provider.dao")
                                 .setXml("provider.dao.mapper")
                                 .setEntity("api.model")
@@ -108,7 +111,7 @@ public class MybatisGeneratorUtil {
                                 .setXml("/templates/mapper.xml")
                                 .setService("/templates/service.java")
                                 .setServiceImpl("/templates/serviceImpl.java")
-                                .setController(null)
+                                .setController("/templates/controller.java")
                 )
                 .setCfg(cfg)
                 .execute();
