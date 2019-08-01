@@ -45,7 +45,7 @@ public class ${entity.substring(0, ${entity.indexOf("DO")})}Criteria extends Abs
 
 
 ## ----------  Integer、Long、Date、BigDecimal字段类型都有的查询条件  ----------
-#elseif(${field.propertyType} == "Integer" || ${field.propertyType} == "Long" || ${field.propertyType} == "Date" || ${field.propertyType} == "BigDecimal")
+#elseif(${field.propertyType} == "Integer" || ${field.propertyType} == "Long" || ${field.propertyType} == "LocalDateTime" || ${field.propertyType} == "BigDecimal")
     private ${field.propertyType} ${field.propertyName}NotEqual;
 
     private ${field.propertyType} or${field.propertyName.substring(0,1).toUpperCase()}${field.propertyName.substring(1)}NotEqual;
@@ -162,7 +162,7 @@ public class ${entity.substring(0, ${entity.indexOf("DO")})}Criteria extends Abs
 
 
     ## ----------  Integer、Long、Date、BigDecimal字段类型都有的 setter 方法  ----------
-#elseif(${field.propertyType} == "Integer" || ${field.propertyType} == "Long" || ${field.propertyType} == "Date" || ${field.propertyType} == "BigDecimal")
+#elseif(${field.propertyType} == "Integer" || ${field.propertyType} == "Long" || ${field.propertyType} == "LocalDateTime" || ${field.propertyType} == "BigDecimal")
     public ${entity.substring(0, ${entity.indexOf("DO")})}Criteria set${field.CapitalName}NotEqual(${field.propertyType} ${field.propertyName}NotEqual) {
         this.${field.propertyName}NotEqual = ${field.propertyName}NotEqual;
         notEquals(${entity}.${field.name.toUpperCase()}, this.${field.propertyName}NotEqual);

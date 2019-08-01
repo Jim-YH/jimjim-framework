@@ -10,6 +10,8 @@ import cn.jimjim.framework.common.entity.BaseDO;
 #if(${field.comment.contains("${enumStart}")})
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 #break
 #end
@@ -17,6 +19,8 @@ import lombok.Getter;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 #end
 
@@ -91,6 +95,11 @@ public class ${entity} implements BaseDO {
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
+## 日期json格式化
+#if(${field.propertyType} == "LocalDateTime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+#end
+    @JsonProperty("${field.name}")
     private ${field.propertyType} ${field.propertyName};
 
 #end
