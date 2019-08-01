@@ -7,11 +7,11 @@ import java.io.Serializable;
 /**
  * @author jimijm
  */
-public interface BaseEntity extends Serializable {
+public interface BaseDO extends Serializable {
 
     Long getId();
 
-    BaseEntity setId(Long id);
+    BaseDO setId(Long id);
 
     default void randomId() {
         setId(IdWorker.getId());

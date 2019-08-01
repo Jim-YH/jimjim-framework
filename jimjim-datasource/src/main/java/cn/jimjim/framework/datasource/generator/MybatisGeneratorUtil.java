@@ -60,6 +60,7 @@ public class MybatisGeneratorUtil {
                 .setEnableCache(false)
                 .setAuthor("jimjim")
                 .setServiceName("%sService")
+                .setEntityName("%sDO")
                 .setOutputDir(mybatisGeneratorObj.getOutputDir())
                 .setFileOverride(true)
                 .setBaseResultMap(true);

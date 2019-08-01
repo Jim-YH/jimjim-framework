@@ -5,7 +5,7 @@ package ${package.Entity};
 import ${pkg};
 #end
 #if(${entityLombokModel})
-import cn.jimjim.framework.common.entity.BaseEntity;
+import cn.jimjim.framework.common.entity.BaseDO;
 #foreach($field in ${table.fields})
 #if(${field.comment.contains("${enumStart}")})
 import com.fasterxml.jackson.annotation.JsonCreator;
